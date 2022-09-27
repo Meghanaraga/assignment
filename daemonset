@@ -1,0 +1,5 @@
+daemonset/Replicaset
+====================
+Daemonset will create pod replicas based on the worker nodes i.e in each worker node one pod will be created but replicaset will create replicas based purely on replicas.
+1. The main use case of kind daemonset is for collecting logs from each node.
+2. The other use case in promethues metrics collection from each node.
