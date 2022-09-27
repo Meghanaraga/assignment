@@ -1,0 +1,23 @@
+Deleting Worker pod:
+	cmd : kubectl delete po worker-dd46d7584-597ww
+	1. No change in the vote and result.
+	2. Due to rs the new pod got created. 
+	3. Due to rolling update did not miss voting updates.
+	4. As the data already pushed to db the results did not change.
+
+Deleting DB pod:
+	cmd : kubectl delete po db-b54cd94f4-wckcf
+	1. As the pods are stateless, once it got restarted the data was lost.
+	2. Result was not getting updated. 
+	3. Restart happened on worker container, due to failure in db connection with restart in failure          option.
+	          NAME                                 READY   STATUS    RESTARTS   AGE
+	O/p - pod/worker-dd46d7584-597ww    1/1     Running   1          9m15s
+	4. When new db came up the worker is sending data to new db pod but result app is not responding to voting app.
+	5. Reason for result app not responding is socket connection is made on db by result app which is synchronous.
+	6. I restarted the worker pod by deleting again.
+	cmd: kubectl delete po worker-dd46d7584-597ww 
+App started working:
+1.	When result app was restarted (delete po on result app) then the app started working.
+cmd: kubectl delete po result-5d57b59f4b-ndxrq
+2.	New connection was started and helped app to work.
+Note: If all the pods are up and working, it doesn’t mean app will be working correct.
