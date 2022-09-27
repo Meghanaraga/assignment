@@ -1,0 +1,8 @@
+Deployment
+==========
+To change the container image for running container or existing deployment can be done in 2 ways.
+1. change the container image in yaml file and reaplly the yaml file.
+   cmd: kubectl apply -f file.yaml
+2. we can edit the deployment directly by command.
+   cmd: kubectl edit deploy -n namespace
+   Here, you can edit the deployment image as required
