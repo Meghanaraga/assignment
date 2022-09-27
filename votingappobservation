@@ -20,8 +20,8 @@ Deleting DB pod:
 	cmd: kubectl delete po worker-dd46d7584-597ww 
 	
 App started working:
-1.	When result app was restarted (delete po on result app) then the app started working.
-cmd: kubectl delete po result-5d57b59f4b-ndxrq
-2.	New connection was started and helped app to work.
+	1. When result app was restarted (delete po on result app) then the app started working.
+	cmd: kubectl delete po result-5d57b59f4b-ndxrq
+	2. New connection was started and helped app to work.
 
 Note: If all the pods are up and working, it doesn’t mean app will be working correct.
