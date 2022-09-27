@@ -1,3 +1,5 @@
+VotingAppObeservations
+======================
 Deleting Worker pod:
 	cmd : kubectl delete po worker-dd46d7584-597ww
 	1. No change in the vote and result.
@@ -16,8 +18,10 @@ Deleting DB pod:
 	5. Reason for result app not responding is socket connection is made on db by result app which is synchronous.
 	6. I restarted the worker pod by deleting again.
 	cmd: kubectl delete po worker-dd46d7584-597ww 
+	
 App started working:
 1.	When result app was restarted (delete po on result app) then the app started working.
 cmd: kubectl delete po result-5d57b59f4b-ndxrq
 2.	New connection was started and helped app to work.
+
 Note: If all the pods are up and working, it doesn’t mean app will be working correct.
