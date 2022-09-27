@@ -1,0 +1,25 @@
+NodePortObesrvations
+====================
+First we check in the yaml file whether type NodePort is exposed properly at service specification.
+we will check the port was exposed by service or not through command
+cmd: kubectl get svc -n namespace
+O/P:    
+NAME     TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
+result   NodePort    10.106.96.251   <none>        5001:31002/TCP   23h
+vote     NodePort    10.104.16.214   <none>        5000:31003/TCP 
+In the above the exposed ports/ externally accessed ports are 31002 and 31003.
+we can also check by describing the service command
+cmd: kubectl describe service  vote -n namespace
+Name:                     vote
+Namespace:                namespace
+Labels:                   <none>
+Annotations:              Selector:  app=vote
+Type:                     NodePort
+IP:                       --------
+Port:                     vote-service  5000/TCP
+TargetPort:               80/TCP
+NodePort:                 vote-service  31003/TCP
+Endpoints:                --------:80
+Session Affinity:         None
+External Traffic Policy:  Cluster
+Events:                   <none>
